@@ -1,98 +1,73 @@
-import { useState, createContext, useContext, PropsWithChildren, Dispatch, SetStateAction } from 'react';
-import { Link, InertiaLinkProps } from '@inertiajs/react';
-import { Transition } from '@headlessui/react';
+import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
+import { IconChevronDown } from "@tabler/icons-react";
+import { useMemo, useState } from "react";
+import { twMerge } from "tailwind-merge";
 
-const DropDownContext = createContext<{
-    open: boolean;
-    setOpen: Dispatch<SetStateAction<boolean>>;
-    toggleOpen: () => void;
-}>({
-    open: false,
-    setOpen: () => {},
-    toggleOpen: () => {},
-});
-
-const Dropdown = ({ children }: PropsWithChildren) => {
-    const [open, setOpen] = useState(false);
-
-    const toggleOpen = () => {
-        setOpen((previousState) => !previousState);
-    };
-
-    return (
-        <DropDownContext.Provider value={{ open, setOpen, toggleOpen }}>
-            <div className="relative">{children}</div>
-        </DropDownContext.Provider>
-    );
-};
-
-const Trigger = ({ children }: PropsWithChildren) => {
-    const { open, setOpen, toggleOpen } = useContext(DropDownContext);
-
-    return (
-        <>
-            <div onClick={toggleOpen}>{children}</div>
-
-            {open && <div className="fixed inset-0 z-40" onClick={() => setOpen(false)}></div>}
-        </>
-    );
-};
-
-const Content = ({ align = 'right', width = '48', contentClasses = 'py-1 bg-white', children }: PropsWithChildren<{ align?: 'left'|'right', width?: '48', contentClasses?: string }>) => {
-    const { open, setOpen } = useContext(DropDownContext);
-
-    let alignmentClasses = 'origin-top';
-
-    if (align === 'left') {
-        alignmentClasses = 'ltr:origin-top-left rtl:origin-top-right start-0';
-    } else if (align === 'right') {
-        alignmentClasses = 'ltr:origin-top-right rtl:origin-top-left end-0';
+export type DropdownItem =
+  | {
+      text: string;
+      value: string;
     }
+  | string;
 
-    let widthClasses = '';
-
-    if (width === '48') {
-        widthClasses = 'w-48';
-    }
-
-    return (
-        <>
-            <Transition
-                show={open}
-                enter="transition ease-out duration-200"
-                enterFrom="opacity-0 scale-95"
-                enterTo="opacity-100 scale-100"
-                leave="transition ease-in duration-75"
-                leaveFrom="opacity-100 scale-100"
-                leaveTo="opacity-0 scale-95"
-            >
-                <div
-                    className={`absolute z-50 mt-2 rounded-md shadow-lg ${alignmentClasses} ${widthClasses}`}
-                    onClick={() => setOpen(false)}
-                >
-                    <div className={`rounded-md ring-1 ring-black ring-opacity-5 ` + contentClasses}>{children}</div>
-                </div>
-            </Transition>
-        </>
-    );
+export type DropdownProps = {
+  items: DropdownItem[];
+  classNames?: {
+    input?: string;
+    dropdown?: string;
+  };
 };
 
-const DropdownLink = ({ className = '', children, ...props }: InertiaLinkProps) => {
-    return (
-        <Link
-            {...props}
-            className={
-                'block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out ' +
-                className
-            }
-        >
-            {children}
-        </Link>
-    );
-};
+export default function Dropdown({ items, classNames }: DropdownProps) {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const selectedItem = useMemo(
+    () => items[selectedIndex],
+    [items, selectedIndex]
+  );
 
-Dropdown.Trigger = Trigger;
-Dropdown.Content = Content;
-Dropdown.Link = DropdownLink;
-
-export default Dropdown;
+  return (
+    <Menu>
+      <MenuButton
+        className={twMerge(
+          "flex items-center gap-2 px-3.5 py-3 rounded-lg border border-brand-gray-300 bg-base-white",
+          classNames?.input
+        )}
+      >
+        <div className="flex grow overflow-hidden overflow-ellipsis">
+          <p className="font-medium text-sm leading-5 text-brand-gray-900">
+            {typeof selectedItem === "string"
+              ? selectedItem
+              : selectedItem.text}
+          </p>
+        </div>
+        <div className="w-5 h-5">
+          <IconChevronDown className="text-brand-gray-500" size={20} />
+        </div>
+      </MenuButton>
+      <MenuItems
+        transition
+        modal={false}
+        anchor={{
+          to: "bottom start",
+          gap: 8,
+        }}
+        className={twMerge(
+          "min-w-52 flex flex-col rounded-lg border border-brand-gray-300 bg-base-white top-1 divide-y divide-brand-gray-300",
+          classNames?.dropdown
+        )}
+      >
+        {items.map((item, index) => (
+          <MenuItem
+            key={typeof item === "string" ? item : item.value}
+            as="button"
+            type="button"
+            className="px-3.5 py-3 flex font-medium text-sm leading-5 data-[focus]:bg-brand-gray-100 text-brand-gray-900"
+            onClick={() => setSelectedIndex(index)}
+          >
+            {typeof item === "string" ? item : item.text}
+          </MenuItem>
+        ))}
+      </MenuItems>
+    </Menu>
+  );
+}

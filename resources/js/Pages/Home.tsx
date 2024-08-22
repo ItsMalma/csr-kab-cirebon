@@ -1,4 +1,5 @@
 import Button from "@/Components/Button";
+import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
 import Divider from "@/Components/Divider";
 import Remarks from "@/Components/Remarks";
 import GenericLayout from "@/Layouts/GenericLayout";
@@ -26,7 +27,7 @@ const newsCount = listOfNews.length;
 function HeroDisplay() {
   return (
     <>
-      <div className="flex flex-col gap-3 text-base-white">
+      <div className="w-[42%] flex flex-col gap-3 text-base-white">
         <h1 className="font-bold text-6.5xl leading-19.25 capitalize">
           Selamat datang di portal CSR Kab. Cirebon
         </h1>
@@ -35,7 +36,7 @@ function HeroDisplay() {
           Cirebon dari para Mitra.
         </h2>
       </div>
-      <div className="flex gap-3.75">
+      <div className="w-[42%] flex gap-3.75">
         <hr className="w-[80%]" />
       </div>
     </>
@@ -171,14 +172,14 @@ function Explanation() {
             <div className="h-full flex flex-col px-2.5 py-5.5">
               <div className="flex h-40 max-h-40 relative">
                 <img
-                  src="/images/kegiatan/1.png"
+                  src="/images/activities/1.png"
                   alt="kegiatan csr"
                   className="left-22.5 absolute shadow-[0px_5px_10px_0px_#00000026]"
                 />
               </div>
               <div className="flex h-50 max-h-50 justify-center items-center">
                 <img
-                  src="/images/kegiatan/2.png"
+                  src="/images/activities/2.png"
                   alt="kegiatan csr"
                   className="shadow-[0px_5px_10px_0px_#00000026]"
                 />
@@ -187,7 +188,7 @@ function Explanation() {
             <div className="h-full flex justify-end items-center px-2.5 pt-2.5 pb-14.5">
               <div className="flex items-center justify-center h-50 max-h-50">
                 <img
-                  src="/images/kegiatan/3.png"
+                  src="/images/activities/3.png"
                   alt="kegiatan csr"
                   className="shadow-[0px_5px_10px_0px_#00000026]"
                 />
@@ -342,52 +343,55 @@ function Sector() {
   );
 }
 
-type Activity = {
-  gambar: string;
-  judul: string;
-  deskripsi: string;
-  tanggal: Date;
-  avatar: string;
-  user: string;
-};
+type Activity = Required<
+  Pick<CardArticleProps, "image" | "title" | "description" | "date" | "author">
+>;
 
 function Activity() {
-  const [daftarKegiatan, setDaftarKegiatan] = useState<Activity[]>([
+  const [activities, setActivities] = useState<Activity[]>([
     {
-      gambar: "/images/kegiatan/daftar-1.png",
-      judul: "Judul Kegiatan Terbaru",
-      deskripsi:
+      image: "/images/activities/daftar-1.png",
+      title: "Judul Kegiatan Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
-      avatar: "/images/avatar/1.webp",
-      user: "John Doe",
+      date: new Date(),
+      author: {
+        avatar: "/images/avatar/1.webp",
+        name: "John Doe",
+      },
     },
     {
-      gambar: "/images/kegiatan/daftar-2.png",
-      judul: "Judul Kegiatan Terbaru",
-      deskripsi:
+      image: "/images/activities/daftar-2.png",
+      title: "Judul Kegiatan Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
-      avatar: "/images/avatar/1.webp",
-      user: "John Doe",
+      date: new Date(),
+      author: {
+        avatar: "/images/avatar/1.webp",
+        name: "John Doe",
+      },
     },
     {
-      gambar: "/images/kegiatan/daftar-3.png",
-      judul: "Judul Kegiatan Terbaru",
-      deskripsi:
+      image: "/images/activities/daftar-3.png",
+      title: "Judul Kegiatan Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
-      avatar: "/images/avatar/1.webp",
-      user: "John Doe",
+      date: new Date(),
+      author: {
+        avatar: "/images/avatar/1.webp",
+        name: "John Doe",
+      },
     },
     {
-      gambar: "/images/kegiatan/daftar-4.png",
-      judul: "Judul Kegiatan Terbaru",
-      deskripsi:
+      image: "/images/activities/daftar-4.png",
+      title: "Judul Kegiatan Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
-      avatar: "/images/avatar/1.webp",
-      user: "John Doe",
+      date: new Date(),
+      author: {
+        avatar: "/images/avatar/1.webp",
+        name: "John Doe",
+      },
     },
   ]);
 
@@ -402,69 +406,8 @@ function Activity() {
         </div>
         <div className="w-full flex flex-col px-8 gap-16 items-center">
           <div className="grid grid-cols-4 gap-8">
-            {daftarKegiatan.map((kegiatan) => (
-              <div key={kegiatan.judul} className="flex flex-col items-stretch">
-                <div className="w-full relative flex justify-center">
-                  <img
-                    src={kegiatan.gambar}
-                    alt={`gambar ${kegiatan.judul.toLowerCase()}`}
-                    className="w-full h-70 object-cover object-center"
-                  />
-                  <div className="absolute left-5 top-5 h-7.5 flex items-center justify-center px-3.5 bg-brand-primary-red-900">
-                    <p className="font-semibold text-xxs leading-7.5 tracking-[1px] text-base-white">
-                      {format(kegiatan.tanggal, "d LLL, y")}
-                    </p>
-                    <svg
-                      width="14"
-                      height="7"
-                      viewBox="0 0 14 7"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="absolute left-0 top-7.25"
-                    >
-                      <mask id="path-1-inside-1_7592_13793" fill="white">
-                        <path d="M0 0H14V7H0V0Z" />
-                      </mask>
-                      <path
-                        d="M14 0H28V-7H14V0ZM0 7H14V-7H0V7ZM0 0V7H28V0H0Z"
-                        fill="url(#paint0_linear_7592_13793)"
-                        mask="url(#path-1-inside-1_7592_13793)"
-                      />
-                      <defs>
-                        <linearGradient
-                          id="paint0_linear_7592_13793"
-                          x1="14"
-                          y1="0"
-                          x2="26.522"
-                          y2="6.26099"
-                          gradientUnits="userSpaceOnUse"
-                        >
-                          <stop stopColor="#EC7444" />
-                          <stop stopOpacity="0" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                  </div>
-                </div>
-                <div className="flex flex-col gap-3.5 px-6 pt-8 pb-10 border border-base-platinum">
-                  <div className="flex gap-3 items-center">
-                    <img
-                      src={kegiatan.avatar}
-                      alt={`avatar ${kegiatan.user}`}
-                      className="w-8 h-8 rounded-full border-2 border-brand-primary-red-900"
-                    />
-                    <p className="font-semibold text-sm leading-5 text-base-sonic-silver">
-                      {kegiatan.user}
-                    </p>
-                  </div>
-                  <h3 className="font-semibold text-xl+ leading-6.75 text-base-chinese-black">
-                    {kegiatan.judul}
-                  </h3>
-                  <p className="text-sm+ leading-6.75 text-base-sonic-silver line-clamp-3">
-                    {kegiatan.deskripsi}
-                  </p>
-                </div>
-              </div>
+            {activities.map((activity) => (
+              <CardArticle key={activity.title} {...activity} />
             ))}
           </div>
           <Button

@@ -16,7 +16,7 @@ function Hero({ display, className, children, displayGap = "md" }: HeroProps) {
       <div className="flex relative z-10 w-full p-20 items-center overflow-hidden">
         <div
           className={twJoin(
-            "flex flex-col w-[42%] z-10",
+            "flex flex-col z-10",
             displayGap === "sm" && "gap-1.5",
             displayGap === "md" && "gap-2.5"
           )}
@@ -46,7 +46,7 @@ Hero.BreadcumbDisplay = function ({
   const pathLength = useMemo(() => path.length, [path]);
 
   return (
-    <div className="flex flex-col gap-1.5">
+    <div className="grow flex flex-col gap-1.5">
       <div className="flex items-center">
         {path.map((segment, index) => (
           <Fragment key={typeof segment === "string" ? segment : segment.name}>

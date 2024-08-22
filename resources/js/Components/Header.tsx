@@ -5,6 +5,7 @@ import Button from "./Button";
 const navItems = {
   Beranda: "home",
   Tentang: "about",
+  Kegiatan: "activity",
 };
 
 export default function Header() {

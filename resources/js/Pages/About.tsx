@@ -1,17 +1,15 @@
 import Button from "@/Components/Button";
+import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
 import Divider from "@/Components/Divider";
 import Hero from "@/Components/Hero";
 import Remarks from "@/Components/Remarks";
 import GenericLayout from "@/Layouts/GenericLayout";
-import { format } from "date-fns";
 import { useState } from "react";
 
-type ProgramReport = {
-  gambar: string;
-  judul: string;
-  deskripsi: string;
-  tanggal: Date;
-};
+type ProgramReport = Pick<
+  CardArticleProps,
+  "image" | "title" | "description" | "date"
+>;
 
 const panduan = {
   "Penyerahan Proposal CSR":
@@ -27,25 +25,25 @@ export default function About() {
     ProgramReport[]
   >([
     {
-      gambar: "/images/program-report/1.png",
-      judul: "Judul Laporan Program Terbaru",
-      deskripsi:
+      image: "/images/program-report/1.png",
+      title: "Judul Laporan Program Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
+      date: new Date(),
     },
     {
-      gambar: "/images/program-report/2.png",
-      judul: "Judul Laporan Program Terbaru",
-      deskripsi:
+      image: "/images/program-report/2.png",
+      title: "Judul Laporan Program Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
+      date: new Date(),
     },
     {
-      gambar: "/images/program-report/3.png",
-      judul: "Judul Laporan Program Terbaru",
-      deskripsi:
+      image: "/images/program-report/3.png",
+      title: "Judul Laporan Program Terbaru",
+      description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
-      tanggal: new Date(),
+      date: new Date(),
     },
   ]);
 
@@ -191,61 +189,7 @@ export default function About() {
           <div className="w-full flex flex-col px-8 gap-16 items-center">
             <div className="grid grid-cols-3 gap-8">
               {latestProgramReport.map((programReport) => (
-                <div
-                  key={programReport.judul}
-                  className="flex flex-col items-stretch"
-                >
-                  <div className="w-full relative flex justify-center">
-                    <img
-                      src={programReport.gambar}
-                      alt={`gambar ${programReport.judul.toLowerCase()}`}
-                      className="w-full h-80 object-cover object-center"
-                    />
-                    <div className="absolute left-5 top-5 h-7.5 flex items-center justify-center px-3.5 bg-brand-primary-red-900">
-                      <p className="font-semibold text-xxs leading-7.5 tracking-[1px] text-base-white">
-                        {format(programReport.tanggal, "d LLL, y")}
-                      </p>
-                      <svg
-                        width="14"
-                        height="7"
-                        viewBox="0 0 14 7"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="absolute left-0 top-7.25"
-                      >
-                        <mask id="path-1-inside-1_7592_13793" fill="white">
-                          <path d="M0 0H14V7H0V0Z" />
-                        </mask>
-                        <path
-                          d="M14 0H28V-7H14V0ZM0 7H14V-7H0V7ZM0 0V7H28V0H0Z"
-                          fill="url(#paint0_linear_7592_13793)"
-                          mask="url(#path-1-inside-1_7592_13793)"
-                        />
-                        <defs>
-                          <linearGradient
-                            id="paint0_linear_7592_13793"
-                            x1="14"
-                            y1="0"
-                            x2="26.522"
-                            y2="6.26099"
-                            gradientUnits="userSpaceOnUse"
-                          >
-                            <stop stopColor="#EC7444" />
-                            <stop stopOpacity="0" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                    </div>
-                  </div>
-                  <div className="flex flex-col gap-3.5 px-6 pt-8 pb-10 border border-base-platinum">
-                    <h3 className="font-semibold text-xl+ leading-6.75 text-base-chinese-black">
-                      {programReport.judul}
-                    </h3>
-                    <p className="text-sm+ leading-6.75 text-base-sonic-silver line-clamp-3">
-                      {programReport.deskripsi}
-                    </p>
-                  </div>
-                </div>
+                <CardArticle key={programReport.title} {...programReport} />
               ))}
             </div>
             <Button

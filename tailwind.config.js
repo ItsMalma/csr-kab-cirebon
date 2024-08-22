@@ -1,4 +1,5 @@
 import forms from "@tailwindcss/forms";
+import typography from "@tailwindcss/typography";
 import defaultTheme from "tailwindcss/defaultTheme";
 
 /** @type {import('tailwindcss').Config} */
@@ -338,6 +339,7 @@ export default {
         160: "40rem",
         166.75: "41.6875rem",
         174: "43.5rem",
+        180: "45rem",
         180.5: "45.125rem",
         187.25: "46.8125rem",
         192: "48rem",
@@ -386,5 +388,5 @@ export default {
       },
     },
   },
-  plugins: [forms],
+  plugins: [forms, typography],
 };
