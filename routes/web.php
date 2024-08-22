@@ -5,12 +5,10 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Beranda');
-})->name("beranda");
-
+Route::inertia('/', "Home")->name("home");
+Route::inertia('/about', "About")->name("about");
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    return inertia('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {

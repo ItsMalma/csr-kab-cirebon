@@ -3,13 +3,8 @@ import { twJoin } from "tailwind-merge";
 import Button from "./Button";
 
 const navItems = {
-  Beranda: "beranda",
-  Tentang: "tentang",
-  Kegiatan: "kegiatan",
-  Statistik: "statistik",
-  Sektor: "sektor",
-  Laporan: "laporan",
-  Mitra: "mitra",
+  Beranda: "home",
+  Tentang: "about",
 };
 
 export default function Header() {
@@ -21,7 +16,7 @@ export default function Header() {
           {Object.entries(navItems).map(([key, value]) => (
             <div key={value} className="flex px-4 pt-2">
               <Link
-                href={value}
+                href={route(value)}
                 className={twJoin(
                   "text-base",
                   route().current(value)

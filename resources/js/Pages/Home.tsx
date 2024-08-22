@@ -1,17 +1,9 @@
 import Button from "@/Components/Button";
 import Divider from "@/Components/Divider";
-import FeaturedIcon from "@/Components/FeaturedIcon";
-import Footer from "@/Components/Footer";
-import Header from "@/Components/Header";
-import Hero from "@/Components/Hero";
+import Remarks from "@/Components/Remarks";
+import GenericLayout from "@/Layouts/GenericLayout";
 import { PageProps } from "@/types";
-import { Head } from "@inertiajs/react";
-import {
-  IconChevronRight,
-  IconMail,
-  IconMapPin,
-  IconPhone,
-} from "@tabler/icons-react";
+import { IconChevronRight } from "@tabler/icons-react";
 import { format, subDays } from "date-fns";
 import { useMemo, useState } from "react";
 import { twJoin } from "tailwind-merge";
@@ -31,63 +23,62 @@ const listOfNews = [
 ];
 const newsCount = listOfNews.length;
 
-function HeroBeranda() {
+function HeroDisplay() {
+  return (
+    <>
+      <div className="flex flex-col gap-3 text-base-white">
+        <h1 className="font-bold text-6.5xl leading-19.25 capitalize">
+          Selamat datang di portal CSR Kab. Cirebon
+        </h1>
+        <h2 className="font-semibold text-xl leading-9 capitalize">
+          Ketahui dan kenali customer social responsibility terhadap Kabupaten
+          Cirebon dari para Mitra.
+        </h2>
+      </div>
+      <div className="flex gap-3.75">
+        <hr className="w-[80%]" />
+      </div>
+    </>
+  );
+}
+
+function Hero() {
   const [page, setPage] = useState(1);
   const news = useMemo(() => listOfNews[page - 1], [page]);
 
   return (
-    <Hero
-      className="h-[65vw]"
-      display={
-        <>
-          <div className="flex flex-col gap-3 text-base-white">
-            <h1 className="font-bold text-6.5xl leading-19.25 capitalize">
-              Selamat datang di portal CSR Kab. Cirebon
-            </h1>
-            <h2 className="font-semibold text-xl leading-9 capitalize">
-              Ketahui dan kenali customer social responsibility terhadap
-              Kabupaten Cirebon dari para Mitra.
-            </h2>
-          </div>
-          <div className="flex gap-3.75">
-            <hr className="w-[80%]" />
-          </div>
-        </>
-      }
-    >
-      <div className="w-154 max-h-96 h-96 absolute right-24 bottom-0 flex flex-col p-12 gap-2.5 bg-brand-gray-900/85 backdrop-blur-2xl z-20">
-        <div className="flex flex-col gap-3 text-base-white grow">
-          <h1 className="font-bold text-2xl leading-7.25">{news.title}</h1>
-          <span className="w-fit flex justify-center items-center px-3.5 bg-brand-primary-red-900 font-semibold text-xxs leading-7.5 tracking-[1px] uppercase">
-            {format(news.date, "eeee, dd MMM yyyy")}
-          </span>
-          <p className="text-sm leading-6.25 capitalize grow line-clamp-5">
-            {news.description}
-          </p>
-        </div>
-        <div className="flex py-3.75">
-          <hr className="w-[86%]" />
-        </div>
-        <div className="flex items-center gap-2 w-fit">
-          {Array.from({ length: newsCount }).map((_, index) => (
-            <span
-              key={index}
-              className={twJoin(
-                "h-1.5 rounded-3.5xl cursor-pointer",
-                index === page - 1
-                  ? "w-12.5 bg-brand-primary-red-900"
-                  : "w-4 bg-base-platinum"
-              )}
-              onClick={() => setPage(index + 1)}
-            ></span>
-          ))}
-        </div>
+    <div className="w-154 max-h-96 h-96 absolute right-24 bottom-0 flex flex-col p-12 gap-2.5 bg-brand-gray-900/85 backdrop-blur-2xl z-20">
+      <div className="flex flex-col gap-3 text-base-white grow">
+        <h1 className="font-bold text-2xl leading-7.25">{news.title}</h1>
+        <span className="w-fit flex justify-center items-center px-3.5 bg-brand-primary-red-900 font-semibold text-xxs leading-7.5 tracking-[1px] uppercase">
+          {format(news.date, "eeee, dd MMM yyyy")}
+        </span>
+        <p className="text-sm leading-6.25 capitalize grow line-clamp-5">
+          {news.description}
+        </p>
       </div>
-    </Hero>
+      <div className="flex py-3.75">
+        <hr className="w-[86%]" />
+      </div>
+      <div className="flex items-center gap-2 w-fit">
+        {Array.from({ length: newsCount }).map((_, index) => (
+          <span
+            key={index}
+            className={twJoin(
+              "h-1.5 rounded-3.5xl cursor-pointer",
+              index === page - 1
+                ? "w-12.5 bg-brand-primary-red-900"
+                : "w-4 bg-base-platinum"
+            )}
+            onClick={() => setPage(index + 1)}
+          ></span>
+        ))}
+      </div>
+    </div>
   );
 }
 
-const listOfMitra = {
+const partners = {
   "Mitra 1": "/images/mitra/1.png",
   "Mitra 2": "/images/mitra/2.png",
   "Mitra 3": "/images/mitra/3.png",
@@ -99,9 +90,9 @@ const listOfMitra = {
   "Mitra 9": "/images/mitra/9.png",
   "Mitra 10": "/images/mitra/10.png",
 };
-const mitraCount = Object.keys(listOfMitra).length;
+const partnerCount = Object.keys(partners).length;
 
-function MitraSection() {
+function Partner() {
   return (
     <section className="px-25 py-24 w-full">
       <div className="flex flex-col gap-10 container ">
@@ -112,12 +103,12 @@ function MitraSection() {
           </h2>
         </div>
         <div className="grid grid-cols-5 justify-center items-center w-fit self-center">
-          {Object.entries(listOfMitra).map(([name, src], index) => (
+          {Object.entries(partners).map(([name, src], index) => (
             <div
               key={name}
               className={twJoin(
                 "flex justify-center items-center w-fit p-8.75 border-gray-modern-200",
-                index < mitraCount - 5 && "border-b",
+                index < partnerCount - 5 && "border-b",
                 index % 5 !== 4 && "border-r"
               )}
             >
@@ -134,14 +125,14 @@ function MitraSection() {
   );
 }
 
-const metricItems = {
+const metrics = {
   "Total Proyek CSR": 124,
   "Proyek Terealisasi": 119,
   "Mitra Bergabung": 89,
   "Dana Terealisasi CSR": "Rp200T +",
 };
 
-function StatistikSection() {
+function Statistics() {
   return (
     <section className="px-25 pt-15 pb-24 w-full">
       <div className="flex flex-col gap-16 container items-center">
@@ -152,7 +143,7 @@ function StatistikSection() {
           </h2>
         </div>
         <div className="flex px-8 gap-8">
-          {Object.entries(metricItems).map(([title, value]) => (
+          {Object.entries(metrics).map(([title, value]) => (
             <div
               key={title}
               className="flex flex-col gap-1 pl-6 border-l-2 border-primary-red-200"
@@ -171,7 +162,7 @@ function StatistikSection() {
   );
 }
 
-function PenjelasanCSRSection() {
+function Explanation() {
   return (
     <section className="px-25 pt-15 pb-30 w-full">
       <div className="flex container gap-20">
@@ -276,7 +267,7 @@ type Sector = {
 };
 type SectorName = keyof typeof sectors;
 
-function SektorSection() {
+function Sector() {
   const sectorNames = useMemo<SectorName[]>(
     () => Object.keys(sectors) as SectorName[],
     []
@@ -351,55 +342,7 @@ function SektorSection() {
   );
 }
 
-function SambutanSection() {
-  return (
-    <section className="px-25 pt-30 pb-24 w-full overflow-hidden">
-      <div className="flex gap-24 container items-center justify-center">
-        <div className="basis-1/2 flex flex-col gap-5">
-          <div className="flex flex-col mb-5 justify-center">
-            <Divider />
-            <h2 className="font-bold text-4.5xl leading-12 text-base-black-pearl">
-              Sambutan Bupati Kabupaten Cirebon
-            </h2>
-          </div>
-          <div className="flex flex-col gap-3.5 text-base leading-6 text-base-sonic-silver">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Voluptates nemo in consectetur nihil nam nesciunt, ut laboriosam
-              minus vitae sint incidunt numquam ratione suscipit reiciendis quia
-              tempore atque reprehenderit? Laudantium?
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem,
-              omnis illum obcaecati temporibus officiis vitae nesciunt, tempora
-              cumque suscipit recusandae fugit magnam fugiat aliquid adipisci
-              atque voluptate ipsa enim asperiores!
-            </p>
-          </div>
-          <div className="flex flex-col gap-2">
-            <p className="font-semibold text-2xl leading-7.25 text-base-black-pearl">
-              Drs. H. Imron Rosyadi, Lc., M.Ag., M.M.
-            </p>
-            <p className="text-base leading-6 text-base-sonic-silver">
-              Bupati Kabupaten Cirebon
-            </p>
-          </div>
-        </div>
-        <div className="basis-1/2 h-128 max-h-128 relative">
-          <div className="absolute w-192 max-w-192 h-128 max-h-128 bg-brand-gray-100 overflow-hidden">
-            <img
-              src="/images/sambutan.png"
-              alt="sambutan"
-              className="absolute left-30.75 top-20.75 w-187.25 h-124.75 object-cover"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-type Kegiatan = {
+type Activity = {
   gambar: string;
   judul: string;
   deskripsi: string;
@@ -408,8 +351,8 @@ type Kegiatan = {
   user: string;
 };
 
-function KegiatanSection() {
-  const [daftarKegiatan, setDaftarKegiatan] = useState<Kegiatan[]>([
+function Activity() {
+  const [daftarKegiatan, setDaftarKegiatan] = useState<Activity[]>([
     {
       gambar: "/images/kegiatan/daftar-1.png",
       judul: "Judul Kegiatan Terbaru",
@@ -546,7 +489,7 @@ const faq: { [question: string]: string } = {
 };
 type FAQQuestion = keyof typeof sectors;
 
-function FAQSection() {
+function FAQ() {
   const questions = useMemo<FAQQuestion[]>(
     () => Object.keys(faq) as FAQQuestion[],
     []
@@ -601,96 +544,23 @@ function FAQSection() {
   );
 }
 
-const contacts = [
-  {
-    icon: IconMapPin,
-    name: "Alamat",
-    values: [
-      "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-    ],
-  },
-  {
-    icon: IconPhone,
-    name: "Phone",
-    values: ["(0231) 321197", "(0231) 3211792"],
-  },
-  {
-    icon: IconMail,
-    name: "Email",
-    values: ["pemkab@cirebonkab.go.id"],
-  },
-];
-
-function Contact() {
+export default function Home({}: PageProps<{}>) {
   return (
-    <section className="px-8 py-10 w-full overflow-hidden flex justify-center">
-      <div className="flex gap-16 container items-center">
-        <div className="grow flex flex-col gap-5">
-          <div className="flex flex-col gap-5">
-            <div className="flex flex-col">
-              <Divider />
-              <h2 className="font-bold text-4.5xl leading-12 text-base-black-pearl">
-                Sambutan Bupati Kabupaten Cirebon
-              </h2>
-            </div>
-            <p className="text-xl leading-7.5 text-base-sonic-silver">
-              Hubungi kami melalui formulir di samping, atau melalui kontak di
-              bawah
-            </p>
-          </div>
-          <div className="flex flex-col pt-5 gap-6">
-            {contacts.map((contact) => (
-              <div className="flex gap-4">
-                <FeaturedIcon icon={contact.icon} />
-                <div className="flex flex-col gap-5 pt-2">
-                  <h3 className="font-semibold text-xl leading-7.5 text-base-black-pearl">
-                    {contact.name}
-                  </h3>
-                  <p className="font-semibold text-base leading-6 text-brand-primary-red-900">
-                    {contact.values.map((value, index) => (
-                      <>
-                        {value}
-                        {index + 1 < contact.values.length && (
-                          <p className="text-base leading-6 text-base-sonic-silver">
-                            atau
-                          </p>
-                        )}
-                      </>
-                    ))}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.057104541483!2d108.477069!3d-6.762892!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e6f1e52ec39ac4b%3A0x11406d4a1fb551d1!2sJl.%20Sunan%20Kalijaga%20No.7%2C%20Sumber%2C%20Kec.%20Sumber%2C%20Kabupaten%20Cirebon%2C%20Jawa%20Barat%2045611!5e0!3m2!1sid!2sid!4v1724204361403!5m2!1sid!2sid"
-          width="600"
-          height="450"
-          allowFullScreen={true}
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-        ></iframe>
-      </div>
-    </section>
-  );
-}
-
-export default function Beranda({}: PageProps<{}>) {
-  return (
-    <>
-      <Head title="Beranda" />
-      <Header />
-      <HeroBeranda />
-      <MitraSection />
-      <StatistikSection />
-      <PenjelasanCSRSection />
-      <SektorSection />
-      <SambutanSection />
-      <KegiatanSection />
-      <FAQSection />
-      <Contact />
-      <Footer />
-    </>
+    <GenericLayout
+      title="Home"
+      hero={{
+        className: "h-[65vw]",
+        display: <HeroDisplay />,
+        children: <Hero />,
+      }}
+    >
+      <Partner />
+      <Statistics />
+      <Explanation />
+      <Sector />
+      <Remarks />
+      <Activity />
+      <FAQ />
+    </GenericLayout>
   );
 }
