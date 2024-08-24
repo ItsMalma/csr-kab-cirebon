@@ -147,7 +147,7 @@ function Statistics() {
           {Object.entries(metrics).map(([title, value]) => (
             <div
               key={title}
-              className="flex flex-col gap-1 pl-6 border-l-2 border-primary-red-200"
+              className="flex flex-col gap-1 pl-6 border-l-2 border-brand-primary-red-200"
             >
               <h3 className="font-semibold text-5xl leading-15 tracking-[-1px] text-brand-primary-red-950">
                 {value}
@@ -334,6 +334,7 @@ function Sector() {
                 size="lg"
                 hierarchy="secondary gray"
                 text="Lihat realisasi program"
+                className="text-base-white"
               />
             </div>
           </div>
@@ -414,7 +415,7 @@ function Activity() {
             size="lg"
             hierarchy="secondary gray"
             text="Lihat semua kegiatan"
-            className="w-fit h-13 text-brand-gray-700 text-base"
+            className="w-fit h-13 text-base"
           />
         </div>
       </div>

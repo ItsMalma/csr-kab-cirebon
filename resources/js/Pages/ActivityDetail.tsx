@@ -188,7 +188,7 @@ export default function ActivityDetail({ slug }: ActivityDetailProps) {
             size="lg"
             hierarchy="secondary gray"
             text="Lihat semua kegiatan"
-            className="w-fit h-13 text-brand-gray-700 text-base"
+            className="w-fit h-13 text-base"
           />
         </div>
       </section>

@@ -13,6 +13,7 @@ Route::get('/activity/{slug}', function (string $slug) {
         "slug" => $slug
     ]);
 })->name("activity-detail");
+Route::inertia('/statistics', "Statistics")->name("statistics");
 
 Route::get('/dashboard', function () {
     return inertia('Dashboard');

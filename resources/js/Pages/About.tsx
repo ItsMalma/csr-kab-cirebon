@@ -49,7 +49,7 @@ export default function About() {
 
   return (
     <GenericLayout
-      title="Home"
+      title="About"
       hero={{
         className: "h-[30vw]",
         display: (
@@ -196,7 +196,7 @@ export default function About() {
               size="lg"
               hierarchy="secondary gray"
               text="Lihat semua laporan program"
-              className="w-fit h-13 text-brand-gray-700 text-base"
+              className="w-fit h-13 text-base"
             />
           </div>
         </div>

@@ -1,8 +1,8 @@
 import Button from "@/Components/Button";
 import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
-import Dropdown from "@/Components/Dropdown";
 import Hero from "@/Components/Hero";
 import Input from "@/Components/Input";
+import Select from "@/Components/Select";
 import GenericLayout from "@/Layouts/GenericLayout";
 import { IconSearch } from "@tabler/icons-react";
 import { useState } from "react";
@@ -84,7 +84,7 @@ export default function Activity() {
 
   return (
     <GenericLayout
-      title="Kegiatan"
+      title="Activity"
       hero={{
         className: "h-[30vw]",
         display: (
@@ -100,11 +100,14 @@ export default function Activity() {
         <div className="flex flex-col gap-10 container items-center">
           <div className="flex flex-col gap-8 w-full">
             <div className="flex gap-6 w-full">
-              <Dropdown
-                items={["Terbaruuuuuuuuuuuuuuuuuuuuuuuuuu", "Populer"]}
+              <Select
+                options={[
+                  { text: "Terbaru", value: "terbaru" },
+                  { text: "Populer", value: "populer" },
+                ]}
+                onChange={(_) => {}}
                 classNames={{
-                  input: "w-60",
-                  dropdown: "",
+                  button: "w-60",
                 }}
               />
               <Input
@@ -128,7 +131,7 @@ export default function Activity() {
             size="lg"
             hierarchy="secondary gray"
             text="Muat lebih banyak"
-            className="w-fit h-13 text-brand-gray-700 text-base"
+            className="w-fit h-13 text-base"
           />
         </div>
       </section>

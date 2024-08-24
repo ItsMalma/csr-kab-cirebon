@@ -2,7 +2,6 @@ import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import defaultTheme from "tailwindcss/defaultTheme";
 
-/** @type {import('tailwindcss').Config} */
 export default {
   content: [
     "./vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php",
@@ -281,6 +280,18 @@ export default {
           800: "#292524",
           900: "#1C1917",
         },
+        "yellow-purple": {
+          500: "#7A5AF8",
+        },
+        "yellow-pink": {
+          500: "#EE46BC",
+        },
+        "yellow-green-light": {
+          500: "#66C61C",
+        },
+        "yellow-green": {
+          500: "#16B364",
+        },
       },
       // colors: {
 
@@ -323,6 +334,7 @@ export default {
         42.5: "10.625rem",
         50: "12.5rem",
         57.75: "14.4375rem",
+        62.5: "15.625rem",
         70: "17.5rem",
         73.5: "18.375rem",
         85: "21.25rem",
@@ -331,6 +343,7 @@ export default {
         100: "25rem",
         102.5: "25.625rem",
         105.25: "26.3125rem",
+        112.5: "28.125rem",
         114: "28.5rem",
         120: "30rem",
         124.75: "31.1875rem",

@@ -25,6 +25,7 @@ export default function Footer() {
           text="Masuk sebagai mitra"
           size="lg"
           hierarchy="secondary gray"
+          className="text-base-white"
         />
       </div>
     </footer>
