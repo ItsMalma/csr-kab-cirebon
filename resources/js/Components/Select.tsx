@@ -28,7 +28,7 @@ export function isSelectOption(
 }
 
 export type SelectProps<TText extends ReactNode, TValue extends Key> = {
-  options: [SelectOption<TText, TValue>, ...SelectOption<TText, TValue>[]];
+  options: SelectOption<TText, TValue>[];
   onChange: (option: TValue) => void;
   classNames?: {
     button?: string;
@@ -87,7 +87,7 @@ export default function Select<TText extends ReactNode, TValue extends Key>({
           gap: 8,
         }}
         className={twMerge(
-          "min-w-52 flex flex-col rounded-lg border border-brand-gray-300 bg-base-white top-1 divide-y divide-brand-gray-300",
+          "min-w-52 flex flex-col rounded-lg border border-brand-gray-300 bg-base-white top-1 divide-y divide-brand-gray-300 overflow-scroll",
           classNames?.options
         )}
         unmount={false}

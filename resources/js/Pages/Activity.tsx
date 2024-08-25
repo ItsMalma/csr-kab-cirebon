@@ -1,5 +1,5 @@
 import Button from "@/Components/Button";
-import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
+import Card, { CardArticleProps } from "@/Components/Card";
 import Hero from "@/Components/Hero";
 import Input from "@/Components/Input";
 import Select from "@/Components/Select";
@@ -120,7 +120,7 @@ export default function Activity() {
           </div>
           <div className="grid grid-cols-4 gap-x-8 gap-y-16">
             {latestActivity.map((activity) => (
-              <CardArticle
+              <Card.Article
                 key={activity.slug}
                 {...activity}
                 href={route("activity-detail", { slug: activity.slug })}

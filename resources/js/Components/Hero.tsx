@@ -38,10 +38,12 @@ Hero.BreadcumbDisplay = function ({
   path,
   title,
   description,
+  children,
 }: {
   path: [...{ name: string; href: string }[], string];
   title: string;
-  description: string;
+  description?: string;
+  children?: ReactNode;
 }) {
   const pathLength = useMemo(() => path.length, [path]);
 
@@ -73,7 +75,10 @@ Hero.BreadcumbDisplay = function ({
         <h1 className="font-bold text-7xl text-base-white leading-21.75">
           {title}
         </h1>
-        <p className="text-sm leading-6.25 text-base-white">{description}</p>
+        {description && (
+          <p className="text-sm leading-6.25 text-base-white">{description}</p>
+        )}
+        {children}
       </div>
     </div>
   );

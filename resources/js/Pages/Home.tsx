@@ -1,5 +1,5 @@
 import Button from "@/Components/Button";
-import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
+import Card, { CardArticleProps } from "@/Components/Card";
 import Divider from "@/Components/Divider";
 import Remarks from "@/Components/Remarks";
 import GenericLayout from "@/Layouts/GenericLayout";
@@ -233,32 +233,32 @@ function Explanation() {
 
 const sectors: { [name: string]: Sector } = {
   Sosial: {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description:
       "CSR dalam lingkup sosial merupakan komitmen perusahaan untuk memberikan kontribusi positif bagi masyarakat di sekitarnya. Ini melibatkan berbagai kegiatan yang bertujuan meningkatkan kualitas hidup masyarakat, seperti program pendidikan, kesehatan, pemberdayaan ekonomi, dan pengentasan kemiskinan. Melalui CSR sosial, perusahaan tidak hanya memenuhi tanggung jawab sosialnya, tetapi juga membangun hubungan yang baik dengan masyarakat, meningkatkan reputasi perusahaan, dan menciptakan dampak sosial yang berkelanjutan. Kegiatan CSR sosial dapat berupa bantuan langsung, seperti donasi, atau program jangka panjang yang melibatkan partisipasi aktif masyarakat, seperti pelatihan keterampilan dan pengembangan komunitas.",
   },
   Lingkungan: {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup lingkungan",
   },
   Kesehatan: {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup kesehatan",
   },
   Pendidikan: {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup pendidikan",
   },
   "Infrastruktur dan sanitasi lingkungan": {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup infrastruktur dan sanitasi lingkungan",
   },
   "Sarana dan prasarana keagamaan": {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup sarana dan prasarana keagamaan",
   },
   Lainnya: {
-    image: "/images/sektor/1.png",
+    image: "/images/sectors/1.png",
     description: "CSR dalam lingkup lainnya",
   },
 };
@@ -408,7 +408,7 @@ function Activity() {
         <div className="w-full flex flex-col px-8 gap-16 items-center">
           <div className="grid grid-cols-4 gap-8">
             {activities.map((activity) => (
-              <CardArticle key={activity.title} {...activity} />
+              <Card.Article key={activity.title} {...activity} />
             ))}
           </div>
           <Button

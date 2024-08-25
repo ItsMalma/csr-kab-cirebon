@@ -1,5 +1,5 @@
 import Button from "@/Components/Button";
-import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
+import Card, { CardArticleProps } from "@/Components/Card";
 import Divider from "@/Components/Divider";
 import Hero from "@/Components/Hero";
 import Remarks from "@/Components/Remarks";
@@ -189,7 +189,7 @@ export default function About() {
           <div className="w-full flex flex-col px-8 gap-16 items-center">
             <div className="grid grid-cols-3 gap-8">
               {latestProgramReport.map((programReport) => (
-                <CardArticle key={programReport.title} {...programReport} />
+                <Card.Article key={programReport.title} {...programReport} />
               ))}
             </div>
             <Button

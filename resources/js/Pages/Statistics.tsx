@@ -1,6 +1,5 @@
 import BarChart from "@/Components/BarChart";
 import Button from "@/Components/Button";
-import { CardArticleProps } from "@/Components/CardArticle";
 import Divider from "@/Components/Divider";
 import Hero from "@/Components/Hero";
 import PieChart from "@/Components/PieChart";
@@ -8,20 +7,6 @@ import Select from "@/Components/Select";
 import GenericLayout from "@/Layouts/GenericLayout";
 import { IconCalendar, IconDownload } from "@tabler/icons-react";
 import { useState } from "react";
-
-type ProgramReport = Pick<
-  CardArticleProps,
-  "image" | "title" | "description" | "date"
->;
-
-const panduan = {
-  "Penyerahan Proposal CSR":
-    "Pihak penerima menyerahkan proposal terkait CSR kepada Perusahaan yang akan di tuju. Jika perusahaan meminta rekomendasi Bupati Cirebon maka pihak penerima perlu membuat surat permohonan penerbitan surat rekomendasi CSR kepada Bupati dengan melampirkan dokumen proposal kegiatan.",
-  "Permohonan Penerbitan Surat CSR":
-    "Permohonan penerbitan surat rekomendasi CSR yang sudah masuk akan di disposisikan kepada Bagian Perekonomian dan SDA untuk di tindak lanjuti. Setelah Surat rekomendasi CSR di tandatangani Bupati maka pihak penerima perlu mengambil surat tersebut dan menyerahkan nya kepada perusahaan.",
-  "Laporan CSR":
-    "Setelah perusahaan menerima surat rekomendasi CSR maka selanjutnya pihak perusahaan berhubungan langsung dengan pihak penerima tanpa ada intervensi dari pemda, di akhir tahun berjalan perusahaan yang mengeluarkan CSR perlu melaporkan penyaluran CSR tersebut kepada Pemda sebagai laporan kepada Bupati.",
-};
 
 export default function Statistics() {
   const [metrics, setMetrics] = useState({

@@ -58,7 +58,8 @@ function Contact() {
                         {value}
                         {index + 1 < contact.values.length && (
                           <span className="text-base leading-6 text-base-sonic-silver">
-                            atau
+                            {" "}
+                            atau{" "}
                           </span>
                         )}
                       </Fragment>

@@ -1,7 +1,7 @@
 import Article from "@/Components/Article";
 import Badge, { BadgeProps } from "@/Components/Badge";
 import Button from "@/Components/Button";
-import CardArticle, { CardArticleProps } from "@/Components/CardArticle";
+import Card, { CardArticleProps } from "@/Components/Card";
 import Divider from "@/Components/Divider";
 import Hero from "@/Components/Hero";
 import IconButton from "@/Components/IconButton";
@@ -177,7 +177,7 @@ export default function ActivityDetail({ slug }: ActivityDetailProps) {
           </div>
           <div className="grid grid-cols-4 gap-x-8 gap-y-16">
             {otherActivity.map((activity) => (
-              <CardArticle
+              <Card.Article
                 key={activity.slug}
                 {...activity}
                 href={route("activity-detail", { slug: activity.slug })}

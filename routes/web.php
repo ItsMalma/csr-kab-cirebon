@@ -14,6 +14,18 @@ Route::get('/activity/{slug}', function (string $slug) {
     ]);
 })->name("activity-detail");
 Route::inertia('/statistics', "Statistics")->name("statistics");
+Route::inertia('/sectors', "Sectors")->name("sectors");
+Route::get('/sectors/{slug}', function (string $slug) {
+    return Inertia::render("SectorDetail", [
+        "slug" => $slug
+    ]);
+})->name("sector-detail");
+Route::get('/sectors/{sectorSlug}/projects/{projectSlug}', function (string $sectorSlug, string $projectSlug) {
+    return Inertia::render("ProjectDetail", [
+        "sectorSlug" => $sectorSlug,
+        "projectSlug" => $projectSlug
+    ]);
+})->name("project-detail");
 
 Route::get('/dashboard', function () {
     return inertia('Dashboard');

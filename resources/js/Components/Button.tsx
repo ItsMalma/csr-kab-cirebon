@@ -7,6 +7,7 @@ export type ButtonProps = {
   size?: "md" | "lg";
   hierarchy?: "primary" | "secondary gray";
   iconLeading?: TablerIcon;
+  onClick?: () => void;
 };
 
 export default function Button({
@@ -15,6 +16,7 @@ export default function Button({
   size = "md",
   hierarchy = "primary",
   iconLeading: IconLeading,
+  onClick,
 }: ButtonProps) {
   return (
     <button
@@ -27,6 +29,7 @@ export default function Button({
           "bg-transparent border border-brand-gray-300 text-brand-gray-700",
         className
       )}
+      onClick={onClick}
     >
       {IconLeading && (
         <IconLeading className={twJoin(size === "md" && "size-5")} />

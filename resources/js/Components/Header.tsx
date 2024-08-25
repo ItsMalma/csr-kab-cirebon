@@ -6,11 +6,12 @@ type NavItem = {
   [text: string]: string | string[];
 };
 
-const navItems = {
+const navItems: NavItem = {
   Beranda: "home",
   Tentang: "about",
   Kegiatan: ["activity", "activity-detail"],
   Statistik: "statistics",
+  Sektor: ["sectors", "sector-detail", "project-detail"],
 };
 
 export default function Header() {
