@@ -6,9 +6,16 @@ import { twMerge } from "tailwind-merge";
 export type ArticleProps = {
   content: string;
   className?: string;
+  classNames?: {
+    p: string;
+  };
 };
 
-export default function Article({ content, className }: ArticleProps) {
+export default function Article({
+  content,
+  className,
+  classNames,
+}: ArticleProps) {
   return (
     <article className={twMerge("w-full flex flex-col gap-4.5", className)}>
       <Markdown
@@ -17,7 +24,12 @@ export default function Article({ content, className }: ArticleProps) {
         components={{
           p(props) {
             return (
-              <p className="text-lg leading-7 text-brand-gray-600">
+              <p
+                className={twMerge(
+                  "text-lg leading-7 text-brand-gray-600",
+                  classNames?.p
+                )}
+              >
                 {props.children}
               </p>
             );

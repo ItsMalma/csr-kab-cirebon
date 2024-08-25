@@ -26,6 +26,12 @@ Route::get('/sectors/{sectorSlug}/projects/{projectSlug}', function (string $sec
         "projectSlug" => $projectSlug
     ]);
 })->name("project-detail");
+Route::inertia('/reports', "Reports")->name("reports");
+Route::get('/reports/{slug}', function (string $slug) {
+    return Inertia::render("ReportDetail", [
+        "slug" => $slug
+    ]);
+})->name("report-detail");
 
 Route::get('/dashboard', function () {
     return inertia('Dashboard');

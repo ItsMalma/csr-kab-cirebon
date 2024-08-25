@@ -71,7 +71,7 @@ export default function ProjectDetail({
     <GenericLayout
       title={`Proyek ${project.name}`}
       hero={{
-        className: "h-[30vw]",
+        className: "h-[38vw]",
         display: (
           <Hero.BreadcumbDisplay
             path={[

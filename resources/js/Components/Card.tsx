@@ -103,7 +103,7 @@ Card.Article = function ({
       {author && (
         <div className="flex gap-3 items-center">
           <img
-            src={author.avatar}
+            src={`/images/avatar/${author.avatar}`}
             alt={`avatar ${author.name}`}
             className="w-8 h-8 rounded-full border-2 border-brand-primary-red-900"
           />

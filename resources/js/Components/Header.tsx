@@ -12,6 +12,7 @@ const navItems: NavItem = {
   Kegiatan: ["activity", "activity-detail"],
   Statistik: "statistics",
   Sektor: ["sectors", "sector-detail", "project-detail"],
+  Laporan: ["reports", "report-detail"],
 };
 
 export default function Header() {

@@ -25,21 +25,21 @@ export default function About() {
     ProgramReport[]
   >([
     {
-      image: "/images/program-report/1.png",
+      image: "placeholder.png",
       title: "Judul Laporan Program Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
     },
     {
-      image: "/images/program-report/2.png",
+      image: "placeholder.png",
       title: "Judul Laporan Program Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
     },
     {
-      image: "/images/program-report/3.png",
+      image: "placeholder.png",
       title: "Judul Laporan Program Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
@@ -189,7 +189,11 @@ export default function About() {
           <div className="w-full flex flex-col px-8 gap-16 items-center">
             <div className="grid grid-cols-3 gap-8">
               {latestProgramReport.map((programReport) => (
-                <Card.Article key={programReport.title} {...programReport} />
+                <Card.Article
+                  key={programReport.title}
+                  {...programReport}
+                  image={`/images/reports/${programReport.image}`}
+                />
               ))}
             </div>
             <Button

@@ -80,16 +80,16 @@ function Hero() {
 }
 
 const partners = {
-  "Mitra 1": "/images/mitra/1.png",
-  "Mitra 2": "/images/mitra/2.png",
-  "Mitra 3": "/images/mitra/3.png",
-  "Mitra 4": "/images/mitra/4.png",
-  "Mitra 5": "/images/mitra/5.png",
-  "Mitra 6": "/images/mitra/6.png",
-  "Mitra 7": "/images/mitra/7.png",
-  "Mitra 8": "/images/mitra/8.png",
-  "Mitra 9": "/images/mitra/9.png",
-  "Mitra 10": "/images/mitra/10.png",
+  "Mitra 1": "1.png",
+  "Mitra 2": "2.png",
+  "Mitra 3": "3.png",
+  "Mitra 4": "4.png",
+  "Mitra 5": "5.png",
+  "Mitra 6": "6.png",
+  "Mitra 7": "7.png",
+  "Mitra 8": "8.png",
+  "Mitra 9": "9.png",
+  "Mitra 10": "10.png",
 };
 const partnerCount = Object.keys(partners).length;
 
@@ -114,7 +114,7 @@ function Partner() {
               )}
             >
               <img
-                src={src}
+                src={`/images/partners/${src}`}
                 alt={`logo ${name}`}
                 className="w-42.5 h-9 object-cover"
               />
@@ -357,7 +357,7 @@ function Activity() {
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
       author: {
-        avatar: "/images/avatar/1.webp",
+        avatar: "1.webp",
         name: "John Doe",
       },
     },
@@ -368,7 +368,7 @@ function Activity() {
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
       author: {
-        avatar: "/images/avatar/1.webp",
+        avatar: "1.webp",
         name: "John Doe",
       },
     },
@@ -379,7 +379,7 @@ function Activity() {
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
       author: {
-        avatar: "/images/avatar/1.webp",
+        avatar: "1.webp",
         name: "John Doe",
       },
     },
@@ -390,7 +390,7 @@ function Activity() {
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
       author: {
-        avatar: "/images/avatar/1.webp",
+        avatar: "1.webp",
         name: "John Doe",
       },
     },
