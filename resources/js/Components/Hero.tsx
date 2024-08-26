@@ -39,11 +39,15 @@ Hero.BreadcumbDisplay = function ({
   title,
   description,
   children,
+  classNames,
 }: {
   path: [...{ name: string; href: string }[], string];
   title: string;
   description?: string;
   children?: ReactNode;
+  classNames?: {
+    title?: string;
+  };
 }) {
   const pathLength = useMemo(() => path.length, [path]);
 
@@ -72,7 +76,12 @@ Hero.BreadcumbDisplay = function ({
         ))}
       </div>
       <div className="flex flex-col gap-3">
-        <h1 className="font-bold text-7xl text-base-white leading-21.75">
+        <h1
+          className={twMerge(
+            "font-bold text-7xl text-base-white leading-21.75",
+            classNames?.title
+          )}
+        >
           {title}
         </h1>
         {description && (

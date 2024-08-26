@@ -32,6 +32,12 @@ Route::get('/reports/{slug}', function (string $slug) {
         "slug" => $slug
     ]);
 })->name("report-detail");
+Route::inertia('/partners', "Partners")->name("partners");
+Route::get('/partners/{slug}', function (string $slug) {
+    return Inertia::render("PartnerDetail", [
+        "slug" => $slug
+    ]);
+})->name("partner-detail");
 
 Route::get('/dashboard', function () {
     return inertia('Dashboard');

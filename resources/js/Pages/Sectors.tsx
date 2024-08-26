@@ -24,7 +24,10 @@ type Sector = Omit<CardProps, "children" | "date" | "href"> & {
 type Project = Omit<CardProps, "children" | "date" | "href"> & {
   title: string;
   address: string;
-  sector: string;
+  sector: {
+    name: string;
+    slug: string;
+  };
   endDate: Date;
   slug: string;
 };
@@ -81,72 +84,72 @@ export default function Sectors() {
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/2.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/3.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/1.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/2.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/3.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/1.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
     {
       image: "/images/sectors/projects/2.png",
       title: "Judul Proyek Terbaru.",
       address:
         "Jl. Sunan Kalijaga No.7, Sumber, Kec. Sumber, Kabupaten Cirebon, Jawa Barat 45611",
-      sector: "Sosial",
+      sector: { name: "Sosial", slug: "sosial" },
       endDate: new Date(),
-      slug: "sosial",
+      slug: "judul-proyek-terbaru",
     },
   ]);
 
@@ -232,7 +235,10 @@ export default function Sectors() {
                 <Card
                   key={project.slug}
                   {...project}
-                  // href={route("project-detail", { slug: project.slug })}
+                  href={route("project-detail", {
+                    sectorSlug: project.sector.slug,
+                    projectSlug: project.slug,
+                  })}
                 >
                   <h3 className="grow font-semibold text-xl+ leading-6.75 text-base-chinese-black">
                     {project.title}
@@ -250,7 +256,7 @@ export default function Sectors() {
                       <IconHash size={20} />
                     </div>
                     <p className="-translate-y-0.5 font-semibold text-sm leading-6.25 line-clamp-3">
-                      Sektor {project.sector}
+                      Sektor {project.sector.name}
                     </p>
                   </div>
                   <div className="w-full flex gap-2 p-2 bg-gray-iron-100 text-base-sonic-silver items-start">

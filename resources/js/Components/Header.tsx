@@ -13,6 +13,7 @@ const navItems: NavItem = {
   Statistik: "statistics",
   Sektor: ["sectors", "sector-detail", "project-detail"],
   Laporan: ["reports", "report-detail"],
+  Mitra: ["partners", "partner-detail"],
 };
 
 export default function Header() {

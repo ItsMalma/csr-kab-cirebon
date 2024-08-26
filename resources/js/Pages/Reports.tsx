@@ -157,7 +157,7 @@ export default function Reports() {
               />
             </div>
           </div>
-          <div className="grid grid-cols-4 gap-x-8 gap-y-16">
+          <div className="grid grid-cols-3 gap-x-8 gap-y-16">
             {reports.map((report) => (
               <Card.Article
                 key={report.slug}

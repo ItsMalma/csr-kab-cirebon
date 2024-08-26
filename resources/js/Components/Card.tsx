@@ -8,26 +8,39 @@ export type CardProps = {
   children: ReactNode;
   date?: string;
   href?: string;
-  className?: string;
+  classNames?: {
+    root?: string;
+    top?: string;
+    image?: string;
+    content?: string;
+  };
 };
 
-function Card({ image, children, date, href, className }: CardProps) {
+function Card({ image, children, date, href, classNames }: CardProps) {
   return (
     <div
       className={twMerge(
         "flex flex-col items-stretch",
         href && "cursor-pointer",
-        className
+        classNames?.root
       )}
       onClick={() => {
         if (href) router.visit(href);
       }}
     >
-      <div className="w-full relative flex justify-center">
+      <div
+        className={twMerge(
+          "w-full h-70 relative flex justify-center items-center bg-brand-gray-50",
+          classNames?.top
+        )}
+      >
         <img
           src={image}
           alt="thumbnail"
-          className="w-full h-70 object-cover object-center"
+          className={twMerge(
+            "w-full h-full object-cover object-center",
+            classNames?.image
+          )}
         />
         {date && (
           <div className="absolute left-5 top-5 h-7.5 flex items-center justify-center px-3.5 bg-brand-primary-red-900">
@@ -91,14 +104,14 @@ Card.Article = function ({
   date,
   author,
   href,
-  className,
+  classNames,
 }: CardArticleProps) {
   return (
     <Card
       image={image}
       date={date.toISOString()}
       href={href}
-      className={className}
+      classNames={classNames}
     >
       {author && (
         <div className="flex gap-3 items-center">
