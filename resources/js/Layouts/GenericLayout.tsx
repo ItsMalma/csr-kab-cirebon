@@ -1,7 +1,7 @@
 import Divider from "@/Components/Divider";
 import FeaturedIcon from "@/Components/FeaturedIcon";
 import Footer from "@/Components/Footer";
-import Header from "@/Components/Header";
+import GenericHeader from "@/Components/GenericHeader";
 import Hero, { HeroProps } from "@/Components/Hero";
 import { Head } from "@inertiajs/react";
 import { IconMail, IconMapPin, IconPhone } from "@tabler/icons-react";
@@ -97,11 +97,11 @@ export default function GenericLayout({
   return (
     <div className="flex flex-col min-h-screen">
       <Head title={title} />
-      <Header />
+      <GenericHeader />
       <Hero {...hero} />
       {children}
       <Contact />
-      <Footer />
+      <Footer buttonText="Masuk sebagai mitra" />
     </div>
   );
 }

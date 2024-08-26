@@ -1,8 +1,10 @@
 import { TablerIcon } from "@tabler/icons-react";
+import { ReactNode } from "react";
 import { twJoin, twMerge } from "tailwind-merge";
 
 export type ButtonProps = {
-  text: string;
+  text: ReactNode;
+  type?: "submit" | "reset" | "button";
   className?: string;
   size?: "md" | "lg";
   hierarchy?: "primary" | "secondary gray";
@@ -12,6 +14,7 @@ export type ButtonProps = {
 
 export default function Button({
   text,
+  type = "button",
   className,
   size = "md",
   hierarchy = "primary",
@@ -20,6 +23,7 @@ export default function Button({
 }: ButtonProps) {
   return (
     <button
+      type={type}
       className={twMerge(
         "flex items-center justify-center rounded-lg font-semibold active:scale-95",
         size === "md" && "px-4 py-2.5 gap-2 text-sm leading-5",

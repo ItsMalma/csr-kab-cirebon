@@ -1,16 +1,10 @@
 import Button from "./Button";
 
-const navItems = {
-  Beranda: "beranda",
-  Tentang: "tentang",
-  Kegiatan: "kegiatan",
-  Statistik: "statistik",
-  Sektor: "sektor",
-  Laporan: "laporan",
-  Mitra: "mitra",
+export type FooterProps = {
+  buttonText: string;
 };
 
-export default function Footer() {
+export default function Footer({ buttonText }: FooterProps) {
   return (
     <footer className="px-25 py-8 flex justify-center items-center bg-brand-gray-900 sticky top-0 z-50">
       <div className="container flex items-center justify-between">
@@ -22,7 +16,7 @@ export default function Footer() {
           </p>
         </div>
         <Button
-          text="Masuk sebagai mitra"
+          text={buttonText}
           size="lg"
           hierarchy="secondary gray"
           className="text-base-white"

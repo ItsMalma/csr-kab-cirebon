@@ -3,7 +3,6 @@ import Hero from "@/Components/Hero";
 import Input from "@/Components/Input";
 import Select from "@/Components/Select";
 import GenericLayout from "@/Layouts/GenericLayout";
-import { IconSearch } from "@tabler/icons-react";
 import { useState } from "react";
 
 type Partner = Pick<CardProps, "image"> & {
@@ -83,9 +82,9 @@ export default function Partners() {
                 }}
               />
               <Input
+                type="search"
                 size="md"
-                classNames={{ wrapper: "grow" }}
-                icon={IconSearch}
+                classNames={{ wrapper: "grow p-3.5" }}
                 placeholder="Cari mitra..."
               />
             </div>

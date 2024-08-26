@@ -6,12 +6,7 @@ import Input from "@/Components/Input";
 import Select from "@/Components/Select";
 import GenericLayout from "@/Layouts/GenericLayout";
 import { router } from "@inertiajs/react";
-import {
-  IconCalendar,
-  IconHash,
-  IconMapPin,
-  IconSearch,
-} from "@tabler/icons-react";
+import { IconCalendar, IconHash, IconMapPin } from "@tabler/icons-react";
 import { format } from "date-fns";
 import { useState } from "react";
 
@@ -224,9 +219,9 @@ export default function Sectors() {
                 onChange={() => {}}
               />
               <Input
+                type="search"
                 size="md"
-                classNames={{ wrapper: "grow" }}
-                icon={IconSearch}
+                classNames={{ wrapper: "grow p-3.5" }}
                 placeholder="Cari proyek..."
               />
             </div>

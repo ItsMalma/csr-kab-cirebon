@@ -1,7 +1,10 @@
-import { TablerIcon } from "@tabler/icons-react";
+import { IconSearch, TablerIcon } from "@tabler/icons-react";
+import { HTMLInputTypeAttribute } from "react";
 import { twMerge } from "tailwind-merge";
 
 export type InputProps = {
+  type?: HTMLInputTypeAttribute;
+  name?: string;
   size?: "md";
   icon?: TablerIcon;
   classNames?: {
@@ -11,9 +14,11 @@ export type InputProps = {
   placeholder?: string;
 };
 
-export default function Input({
+function Input({
+  type = "text",
+  name,
   size = "md",
-  icon: Icon,
+  icon: Icon = type === "search" ? IconSearch : undefined,
   classNames,
   placeholder,
 }: InputProps) {
@@ -21,7 +26,7 @@ export default function Input({
     <div
       className={twMerge(
         "flex items-center border border-brand-gray-300 rounded-lg",
-        size === "md" && "gap-2 p-3.5",
+        size === "md" && "gap-2 px-4 py-2",
         classNames?.wrapper
       )}
     >
@@ -31,9 +36,10 @@ export default function Input({
         </div>
       )}
       <input
-        type="text"
+        name={name}
+        type={type}
         className={twMerge(
-          "grow placeholder-brand-gray-500 font-medium text-brand-gray-900 border-none p-0 focus:outline-none focus:ring-0",
+          "grow placeholder-brand-gray-400 font-medium text-brand-gray-900 border-none p-0 focus:outline-none focus:ring-0",
           size === "md" && "text-sm leading-5",
           classNames?.input
         )}
@@ -42,3 +48,27 @@ export default function Input({
     </div>
   );
 }
+
+type InputWithLabelProps = {
+  input: InputProps;
+  label: {
+    text: string;
+    required?: boolean;
+  };
+};
+
+Input.WithLabel = function ({ input, label }: InputWithLabelProps) {
+  return (
+    <div className="flex flex-col gap-2">
+      <div className="flex gap-1 font-semibold text-sm leading-4">
+        <label htmlFor={input.name} className="text-brand-gray-800">
+          {label.text}
+        </label>
+        <p className="text-brand-primary-red-900">*</p>
+      </div>
+      <Input {...input} />
+    </div>
+  );
+};
+
+export default Input;

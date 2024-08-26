@@ -4,94 +4,125 @@ import Hero from "@/Components/Hero";
 import Input from "@/Components/Input";
 import Select from "@/Components/Select";
 import GenericLayout from "@/Layouts/GenericLayout";
-import { IconSearch } from "@tabler/icons-react";
 import { useState } from "react";
 
-type Activity = Pick<
+type Report = Pick<
   CardArticleProps,
-  "image" | "title" | "description" | "date"
+  "image" | "title" | "description" | "date" | "author"
 > & {
   slug: string;
 };
 
-export default function Activity() {
-  const [latestActivity, setLatestActivity] = useState<Activity[]>([
+export default function Reports() {
+  const [reports, setReports] = useState<Report[]>([
     {
-      image: "/images/activities/daftar-1.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-2.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-3.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-4.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-1.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-2.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-3.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
     {
-      image: "/images/activities/daftar-4.png",
-      title: "Judul Kegiatan Terbaru",
+      image: "placeholder.png",
+      title: "Judul Laporan Terbaru",
       description:
         "Praesent viverra sapien congue aliquet viverra maecenas sed bibendum. Elementum risus accu...",
       date: new Date(),
-      slug: "judul-kegiatan-terbaru",
+      author: {
+        name: "John Doe",
+        avatar: "1.webp",
+      },
+      slug: "judul-laporan-terbaru",
     },
   ]);
 
   return (
     <GenericLayout
-      title="Activity"
+      title="Report"
       hero={{
         className: "h-[30vw]",
         display: (
           <Hero.BreadcumbDisplay
-            path={[{ name: "Beranda", href: route("home") }, "Kegiatan"]}
-            title="Kegiatan"
-            description="Kegiatan terkini dari CSR Kabupaten Cirebon"
+            path={[{ name: "Beranda", href: route("home") }, "Laporan"]}
+            title="Laporan"
+            description="Laporan terkini dari CSR Kabupaten Cirebon"
           />
         ),
       }}
@@ -110,20 +141,28 @@ export default function Activity() {
                   button: "w-60",
                 }}
               />
+              <Select<string, string | number>
+                options={[{ text: "Semua Mitra", value: 1 }]}
+                onChange={(_) => {}}
+                classNames={{
+                  button: "w-60",
+                }}
+              />
               <Input
+                type="search"
                 size="md"
-                classNames={{ wrapper: "grow" }}
-                icon={IconSearch}
-                placeholder="Cari kegiatan..."
+                classNames={{ wrapper: "grow p-3.5" }}
+                placeholder="Cari laporan..."
               />
             </div>
           </div>
           <div className="grid grid-cols-3 gap-x-8 gap-y-16">
-            {latestActivity.map((activity) => (
+            {reports.map((report) => (
               <Card.Article
-                key={activity.slug}
-                {...activity}
-                href={route("activity-detail", { slug: activity.slug })}
+                key={report.slug}
+                {...report}
+                href={route("report-detail", { slug: report.slug })}
+                image={`/images/reports/${report.image}`}
               />
             ))}
           </div>
