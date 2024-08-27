@@ -7,7 +7,7 @@ export type ButtonProps = {
   type?: "submit" | "reset" | "button";
   className?: string;
   size?: "md" | "lg";
-  hierarchy?: "primary" | "secondary gray";
+  hierarchy?: "primary" | "secondary gray" | "tertiary gray";
   iconLeading?: TablerIcon;
   onClick?: () => void;
 };
@@ -31,12 +31,18 @@ export default function Button({
         hierarchy === "primary" && "bg-brand-primary-red-900 text-base-white",
         hierarchy === "secondary gray" &&
           "bg-transparent border border-brand-gray-300 text-brand-gray-700",
+        hierarchy === "tertiary gray" && "bg-transparent text-brand-gray-600",
         className
       )}
       onClick={onClick}
     >
       {IconLeading && (
-        <IconLeading className={twJoin(size === "md" && "size-5")} />
+        <IconLeading
+          className={twJoin(
+            size === "md" && "size-5",
+            hierarchy === "tertiary gray" && "text-brand-primary-red-900"
+          )}
+        />
       )}
       {text}
     </button>

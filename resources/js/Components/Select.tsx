@@ -65,19 +65,29 @@ export default function Select<TText extends ReactNode, TValue extends Key>({
           classNames?.button
         )}
       >
-        <div className="flex grow overflow-hidden overflow-ellipsis">
-          <p
-            className={twJoin(
-              "font-medium text-sm leading-5",
-              value === null ? "text-brand-gray-500" : "text-brand-gray-900"
-            )}
-          >
-            {selectedOption.text}
-          </p>
-        </div>
-        <div className="w-5 h-5">
-          <Icon className="text-brand-gray-500" size={20} />
-        </div>
+        {({ open }) => (
+          <>
+            <div className="flex grow overflow-hidden overflow-ellipsis">
+              <p
+                className={twJoin(
+                  "font-medium text-sm leading-5",
+                  value === null ? "text-brand-gray-500" : "text-brand-gray-900"
+                )}
+              >
+                {selectedOption.text}
+              </p>
+            </div>
+            <div className="w-5 h-5">
+              <Icon
+                className={twMerge(
+                  "text-brand-gray-500 transform transition-transform duration-200",
+                  open && "rotate-180"
+                )}
+                size={20}
+              />
+            </div>
+          </>
+        )}
       </ListboxButton>
       <ListboxOptions
         transition

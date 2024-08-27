@@ -281,6 +281,8 @@ export default {
           900: "#1C1917",
         },
         "yellow-purple": {
+          50: "#F4F3FF",
+          100: "#EBE9FE",
           500: "#7A5AF8",
         },
         "yellow-pink": {
@@ -291,6 +293,7 @@ export default {
         },
         "yellow-green": {
           500: "#16B364",
+          600: "#099250",
         },
       },
       // colors: {
@@ -376,6 +379,7 @@ export default {
         xxs: "0.625rem",
         "sm+": "0.9375rem",
         "xl+": "1.375rem",
+        "2.5xl": "1.75rem",
         "3.5xl": "2rem",
         "4.5xl": "2.5rem",
         "5.5xl": "3.5rem",
@@ -392,7 +396,9 @@ export default {
         7.5: "1.875rem",
         9.75: "2.4375rem",
         10.75: "2.6875rem",
+        11: "2.75rem",
         12: "3rem",
+        13.5: "3.375rem",
         14.5: "3.625rem",
         15: "3.75rem",
         16: "4rem",

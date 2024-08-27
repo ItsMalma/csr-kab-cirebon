@@ -2,7 +2,7 @@ import Button from "@/Components/Button";
 import Footer from "@/Components/Footer";
 import Header from "@/Components/Header";
 import Input from "@/Components/Input";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Head, Link, router, useForm } from "@inertiajs/react";
 import { IconArrowLeft } from "@tabler/icons-react";
 import { FormEventHandler } from "react";
 
@@ -62,6 +62,9 @@ export default function Login() {
               size="md"
               hierarchy="secondary gray"
               className="w-fit h-11"
+              onClick={() => {
+                router.visit(route("register"));
+              }}
             />
           </div>
           <form className="grow flex flex-col justify-between px-10 py-15 border-l border-brand-gray-100">

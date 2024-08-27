@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 export type InputProps = {
   type?: HTMLInputTypeAttribute;
   name?: string;
-  size?: "md";
+  size?: "md" | "lg";
   icon?: TablerIcon;
   classNames?: {
     wrapper?: string;
@@ -25,7 +25,7 @@ function Input({
   return (
     <div
       className={twMerge(
-        "flex items-center border border-brand-gray-300 rounded-lg",
+        "bg-white flex items-center border border-brand-gray-300 rounded-lg",
         size === "md" && "gap-2 px-4 py-2",
         classNames?.wrapper
       )}

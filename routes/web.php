@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Partner\PartnerDashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,10 @@ Route::controller(LoginController::class)->group(function () {
 });
 Route::controller(RegisterController::class)->group(function () {
     Route::get('/register', 'get')->name('register');
+});
+
+Route::controller(PartnerDashboardController::class)->group(function () {
+    Route::get('/partner/dashboard', 'index')->name('partner.dashboard');
 });
 
 Route::get('/dashboard', function () {
