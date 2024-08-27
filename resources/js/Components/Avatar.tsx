@@ -12,7 +12,7 @@ export type AvatarProps = {
 };
 
 export default function Avatar({
-  src = "placeholder.png",
+  src = "placeholder.svg",
   alt = "avatar",
   size,
   name,
@@ -32,7 +32,7 @@ export default function Avatar({
           e.currentTarget.src = `https://ui-avatars.com/api/?name=${name}&background=F2F4F7&color=667085`;
           return;
         }
-        e.currentTarget.src = "/images/avatars/placeholder.png";
+        e.currentTarget.src = "/images/avatars/placeholder.svg";
       }}
     />
   );
