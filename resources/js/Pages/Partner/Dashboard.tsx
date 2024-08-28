@@ -7,6 +7,7 @@ import Select from "@/Components/Select";
 import Table from "@/Components/Table";
 import PartnerLayout from "@/Layouts/PartnerLayout";
 import { formatMoney } from "@/utils/format";
+import { router } from "@inertiajs/react";
 import {
   IconArrowDown,
   IconDownload,
@@ -500,6 +501,7 @@ export default function Dashboard({ reports }: DashboardProps) {
             text="Muat Lebih Banyak"
             iconLeading={IconRefresh}
             className="h-13"
+            onClick={() => router.visit(route("partner.reports"))}
           />
         </div>
       </main>
